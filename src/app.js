@@ -5,11 +5,20 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 require("./auth/passport");
+const authRouter = require('./routes/auth');
+const cardRouter = require('./routes/cards');
+const authenticateUser = require('./middleware/authentication');
 
-require("./models/user");
 
-const middlewares = require("./middleware/middlewares");
-const api = require("./routes");
+
+
+
+const notFoundMiddleware = require('./middleware/not-found');
+const errorHandlerMiddleware = require('./middleware/error-handler');
+
+
+
+
 
 const app = express();
 
@@ -27,9 +36,11 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/api/v1", api);
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/cards', authenticateUser, cardRouter);
 
-app.use(middlewares.notFound);
-app.use(middlewares.errorHandler);
+
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 module.exports = app;
