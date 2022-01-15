@@ -1,4 +1,4 @@
-const Card = require("../models/lifestyleCard");
+const Card = require("../models/Card");
 const {StatusCodes, METHOD_FAILURE} =require('http-status-codes')
 //const passport =require('../middleware/passport')
 const { BadRequestError, NotFoundError } = require('../errors')
@@ -113,7 +113,7 @@ const deleteAll = (req, res) => {
       truncate: false
     })
       .then(nums => {
-        res.send({ 
+        res.send({
           message: `${nums} Lifestyle Cards were deleted successfully!` });
       })
       .catch(err => {
@@ -124,13 +124,30 @@ const deleteAll = (req, res) => {
       });
   };
 
+  const cardType = (req, res) => {
+    res.send([
+      {
+        cardType: "LifeStyle Pro",
+        cost: 9000
+      },
+      {
+        cardType: "LifeStyle Premium",
+        cost: 1000
+      },
+      {
+        cardType: "LifeStyle Business",
+        cost: 1200
+      }
+    ]);
+  }
 
-    
+
 module.exports={
   create,
   getAllCards,
   getCard,
   updateCard,
   deleteCard,
-  deleteAll
+  deleteAll,
+  cardType
 }
