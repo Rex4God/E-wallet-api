@@ -9,12 +9,13 @@ const cardRouter = require('./routes/cards');
 const merchantRouter = require('./routes/merchant')
 const  walletRouter  = require('./routes/wallet')
 const categoryRouter  = require('./routes/category')
-//const authenticateUser =require("./middleware/passport");
+const paymentRouter = require('./routes/payment')
+require("./middleware/passport");
 
 
 
 
-
+//Middleware Declaration
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
@@ -43,6 +44,7 @@ app.use('/api/v1/cards', cardRouter);
 app.use('/api/v1/merchants', merchantRouter)
 app.use('/api/v1/wallet', walletRouter)
 app.use('/api/v1/category', categoryRouter)
+app.use('/api/v1/', paymentRouter)
 
 
 app.use(notFoundMiddleware);

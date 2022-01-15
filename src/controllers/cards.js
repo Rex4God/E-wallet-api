@@ -1,6 +1,6 @@
 const Card = require("../models/lifestyleCard");
 const {StatusCodes, METHOD_FAILURE} =require('http-status-codes')
-//const passport =require('../middleware/passport')
+const passport =require('../middleware/passport')
 const { BadRequestError, NotFoundError } = require('../errors')
 
 const create= async(req, res) => {
