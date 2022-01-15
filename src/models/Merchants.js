@@ -2,16 +2,18 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../database/db");
 const User = require("./User");
 
-const  Wallet  = sequelize.define("Wallet",{
-income:{
+const  Merchants  = sequelize.define("Merchants",{
+merchantName:{
     type:DataTypes.STRING,
     allowNull: false,
-    required: true,
 },
-spent:{
+merchantTransaction:{
     type:DataTypes.STRING,
     allowNull: false,
-
+},
+amount:{
+    type:DataTypes.STRING,
+    allowNull: false,
 },
     createdBy:{
         type:DataTypes.INTEGER,
@@ -22,6 +24,6 @@ spent:{
     },
     
 })
-Wallet.belongsTo(User)
+Merchants.belongsTo(User)
 
-module.exports =Wallet
+module.exports =Merchants

@@ -1,9 +1,11 @@
+
 const passport = require("passport");
 const passportJwt = require("passport-jwt");
 const ExtractJwt = passportJwt.ExtractJwt;
 const StrategyJwt = passportJwt.Strategy;
-const User = require("../models/user");
+const User = require("../models/User");
 
+const auth = async (req, res, next) => {
 passport.use(
   new StrategyJwt(
     {
@@ -21,3 +23,5 @@ passport.use(
     }
   )
 );
+  }
+module.exports=auth

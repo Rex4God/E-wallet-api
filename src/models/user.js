@@ -5,6 +5,7 @@ const User = sequelize.define("User", {
   firstName: {
     type: DataTypes.STRING,
     allowNull: false,
+    require:  true
   },
   lastName: {
     type: DataTypes.STRING,
@@ -13,6 +14,7 @@ const User = sequelize.define("User", {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
+    isEmail: true,
   },
   phone: {
     type: DataTypes.STRING,
@@ -22,10 +24,7 @@ const User = sequelize.define("User", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-   image: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+   
 });
 
 module.exports = User;

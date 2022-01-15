@@ -1,3 +1,26 @@
+
 const express = require("express");
-const Wallet = require("../models/wallet");
-const {StatusCodes} =require('http-status-codes')
+
+const router = express.Router()
+
+const {create,
+    getAllWallets,
+    getWallet,
+    updateWallet,
+    deleteWallet,
+    deleteAll}= require('../controllers/wallet')
+
+router.route('/').post(create).get(getAllWallets).delete(deleteAll)
+
+router.route('/:id').get(getWallet).delete(deleteWallet).put(updateWallet)
+
+
+
+
+module.exports=router
+
+
+
+
+
+

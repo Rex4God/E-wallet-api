@@ -3,15 +3,16 @@ const express = require("express");
 
 const router = express.Router()
 
-const { createCard,
-    deleteCard,
+const {create,
     getAllCards,
+    getCard,  
     updateCard,
-    getCard,}= require('../controllers/cards')
+    deleteCard,
+    deleteAll}= require('../controllers/cards')
 
-    router.route('/').post(createCard).get(getAllCards)
+router.route('/').post(create).get(getAllCards).delete(deleteAll)
 
-router.route('/:id').get(getCard).delete(deleteCard).patch(updateCard)
+router.route('/:id').get(getCard).delete(deleteCard).put(updateCard)
 
 
 

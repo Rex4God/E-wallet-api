@@ -4,10 +4,12 @@ const helmet = require("helmet");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
-require("./auth/passport");
 const authRouter = require('./routes/auth');
 const cardRouter = require('./routes/cards');
-const authenticateUser = require('./middleware/authentication');
+const merchantRouter = require('./routes/merchant')
+const  walletRouter  = require('./routes/wallet')
+const categoryRouter  = require('./routes/category')
+//const authenticateUser =require("./middleware/passport");
 
 
 
@@ -35,9 +37,12 @@ app.get("/", (req, res) => {
     message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄",
   });
 });
-
+//Route Middleware
 app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/cards', authenticateUser, cardRouter);
+app.use('/api/v1/cards', cardRouter);
+app.use('/api/v1/merchants', merchantRouter)
+app.use('/api/v1/wallet', walletRouter)
+app.use('/api/v1/category', categoryRouter)
 
 
 app.use(notFoundMiddleware);
