@@ -125,6 +125,25 @@ const deleteAll = (req, res) => {
       });
   };
 
+  const cardType = () => {
+    console.log(" hellow")
+    return "cardType";
+    // return [
+    //   {
+    //     cardType: "LifeStyle Pro",
+    //     cost: 9000
+    //   },
+    //   {
+    //     cardType: "LifeStyle Premium",
+    //     cost: 1000
+    //   },
+    //   {
+    //     cardType: "LifeStyle Business",
+    //     cost: 1200
+    //   }
+    // ]
+  }
+
 
     
 module.exports={
@@ -133,5 +152,6 @@ module.exports={
   getCard,
   updateCard,
   deleteCard,
-  deleteAll
+  deleteAll,
+  cardType
 }

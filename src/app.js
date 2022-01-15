@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
 });
 //Route Middleware
 app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/cards', cardRouter);
+app.use('/api/v1/cards/card-type', cardRouter);
 app.use('/api/v1/merchants', merchantRouter)
 app.use('/api/v1/wallet', walletRouter)
 app.use('/api/v1/category', categoryRouter)

@@ -3,19 +3,21 @@ const express = require("express");
 
 const router = express.Router()
 
-const {create,
-    getAllCards,
-    getCard,  
-    updateCard,
-    deleteCard,
-    deleteAll}= require('../controllers/cards')
 
-router.route('/').post(create).get(getAllCards).delete(deleteAll)
+const cardController = require('../controllers/cards')
 
-router.route('/:id').get(getCard).delete(deleteCard).put(updateCard)
+router.route('/')
+.post(cardController.create)
+.get(cardController.getAllCards)
+.delete(cardController.deleteAll)
 
+router.route('/:id')
+.get(cardController.getCard)
+.delete(cardController.deleteCard)
+.put(cardController.updateCard)
 
-
+router.route('/card-type')
+.get(cardController.cardType)
 
 module.exports=router
 
