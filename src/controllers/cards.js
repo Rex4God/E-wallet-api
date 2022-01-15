@@ -1,4 +1,4 @@
-const Card = require("../models/lifestyleCard");
+const Card = require("../models/Card");
 const {StatusCodes, METHOD_FAILURE} =require('http-status-codes')
 const passport =require('../middleware/passport')
 const { BadRequestError, NotFoundError } = require('../errors')
@@ -22,7 +22,7 @@ const create= async(req, res) => {
   //  Saving  Life Style  card
   Card.create(card)
     .then(data => {
-      res.send(data);
+      res.status(StatusCodes.CREATED).send({data, message: "Lifestyle Card Created Successfully"});
     })
     .catch(err => {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
@@ -52,6 +52,7 @@ const getCard =async (req, res) => {
   Card.findByPk(id)
     .then(data => {
       res.send(data);
+      
     })
     .catch(err => {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
@@ -69,7 +70,7 @@ const updateCard= (req, res) => {
     .then(num => {
       if (num == 1) {
         res.send({
-          status: success,
+          
           message: "LifeStyle Card was updated successfully."
         });
       } else {
