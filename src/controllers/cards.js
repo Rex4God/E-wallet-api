@@ -128,15 +128,19 @@ const deleteAll = (req, res) => {
     res.send([
       {
         cardType: "LifeStyle Pro",
-        cost: 9000
+        cost: 9000,
+        time: new Date()
       },
       {
         cardType: "LifeStyle Premium",
-        cost: 1000
+        cost: 1000,
+        time: new Date()
+        
       },
       {
         cardType: "LifeStyle Business",
-        cost: 1200
+        cost: 1200,
+        time: new Date()
       }
     ]);
   }
