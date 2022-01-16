@@ -52,7 +52,6 @@ const getCard =async (req, res) => {
   Card.findByPk(id)
     .then(data => {
       res.send(data);
-      
     })
     .catch(err => {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
@@ -70,7 +69,7 @@ const updateCard= (req, res) => {
     .then(num => {
       if (num == 1) {
         res.send({
-          
+
           message: "LifeStyle Card was updated successfully."
         });
       } else {
@@ -114,7 +113,7 @@ const deleteAll = (req, res) => {
       truncate: false
     })
       .then(nums => {
-        res.send({ 
+        res.send({
           message: `${nums} Lifestyle Cards were deleted successfully!` });
       })
       .catch(err => {
@@ -125,6 +124,7 @@ const deleteAll = (req, res) => {
       });
   };
 
+<<<<<<< HEAD
   const cardType = () => {
      return [
       {
@@ -163,10 +163,26 @@ const deleteAll = (req, res) => {
         time: Date.now(),
       }
    ]
+=======
+  const cardType = (req, res) => {
+    res.send([
+      {
+        cardType: "LifeStyle Pro",
+        cost: 9000
+      },
+      {
+        cardType: "LifeStyle Premium",
+        cost: 1000
+      },
+      {
+        cardType: "LifeStyle Business",
+        cost: 1200
+      }
+    ]);
+>>>>>>> ac5b141a899d9d724f483e59f0b63bf28e96860b
   }
 
 
-    
 module.exports={
   create,
   getAllCards,

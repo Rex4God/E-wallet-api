@@ -12,16 +12,8 @@ const categoryRouter  = require('./routes/category')
 const paymentRouter = require('./routes/payment')
 require("./middleware/passport");
 
-
-
-
-//Middleware Declaration
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
-
-
-
-
 
 const app = express();
 
@@ -38,16 +30,18 @@ app.get("/", (req, res) => {
     message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄",
   });
 });
+
 //Route Middleware
 app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/cards/card-type', cardRouter);
+app.use('/api/v1/cards', cardRouter);
 app.use('/api/v1/merchants', merchantRouter)
 app.use('/api/v1/wallet', walletRouter)
 app.use('/api/v1/category', categoryRouter)
-app.use('/api/v1/', paymentRouter)
-
-
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-module.exports = app;
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+  console.log(`Listening: http://localhost:${port}`);
+});
