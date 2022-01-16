@@ -3,7 +3,7 @@ const  sequelize =require('../database/db');
 const User = require("./User");
 
  const Cards = sequelize.define("Cards",{
-      createdBy:{
+      userId:{
       type:DataTypes.INTEGER,
        references:{
        model: User,

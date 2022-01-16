@@ -9,7 +9,8 @@ const cardRouter = require('./routes/cards');
 const merchantRouter = require('./routes/merchant')
 const  walletRouter  = require('./routes/wallet')
 const categoryRouter  = require('./routes/category')
-//const authenticateUser =require("./middleware/passport");
+const paymentRouter = require('./routes/payment')
+require("./middleware/passport");
 
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');

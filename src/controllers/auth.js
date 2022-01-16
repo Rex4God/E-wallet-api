@@ -3,7 +3,12 @@ const {StatusCodes} =require('http-status-codes')
 const jwt = require("jsonwebtoken");
 
 const register =async (req, res) => {
-    const { firstName,lastName, email, phone, password} = req.body;
+    const { 
+      firstName,
+      lastName, 
+      email, 
+      phone,
+      password} = req.body;
   
     const alreadyExistsUser = await User.findOne({ where: { email } }).catch(
       (err) => {
