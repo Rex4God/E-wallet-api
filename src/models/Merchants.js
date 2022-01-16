@@ -15,7 +15,7 @@ amount:{
     type:DataTypes.STRING,
     allowNull: false,
 },
-    createdBy:{
+    usersId:{
         type:DataTypes.INTEGER,
         references:{
          model: User,

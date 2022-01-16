@@ -1,11 +1,11 @@
 const Card = require("../models/Card");
-const {StatusCodes, METHOD_FAILURE} =require('http-status-codes')
+const {StatusCodes} =require('http-status-codes')
 const passport =require('../middleware/passport')
 const { BadRequestError, NotFoundError } = require('../errors')
 
 const create= async(req, res) => {
   // Validate request
-  if (!req.body.createdBy) {
+  if (!req.body.usersId) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,7 +14,7 @@ const create= async(req, res) => {
 
   //creating of card
   const card = {
-    createdBy: req.body.createdBy,
+    usersId: req.body.usersId,
     cardType: req.body.cardType,
     amount: req.body.amount
   };
@@ -32,8 +32,8 @@ const create= async(req, res) => {
     });
 };
 const getAllCards = async(req, res) => {
-  const createdBy = req.query.createdBy;
-  const condition = createdBy? { createdBy: { [Op.like]: `%${createdBy}%` } } : null;
+  const usersId = req.query.usersId;
+  const condition = usersId? { usersId: { [Op.like]: `%${usersId}%` } } : null;
 
   Card.findAll({ where: condition })
     .then(data => {
@@ -126,22 +126,43 @@ const deleteAll = (req, res) => {
   };
 
   const cardType = () => {
-    console.log(" hellow")
-    return "cardType";
-    // return [
-    //   {
-    //     cardType: "LifeStyle Pro",
-    //     cost: 9000
-    //   },
-    //   {
-    //     cardType: "LifeStyle Premium",
-    //     cost: 1000
-    //   },
-    //   {
-    //     cardType: "LifeStyle Business",
-    //     cost: 1200
-    //   }
-    // ]
+     return [
+      {
+      cardType: "LifeStyle Pro",
+       cost: 9000,
+       time: Date.now()
+     },
+       {
+         cardType: "LifeStyle Premium",
+         cost: 1000,
+         time: Date.now()
+      },
+      {
+        cardType: "LifeStyle Business",
+        cost: 1200,
+        time: Date.now(),
+      },
+      {
+        cardType: "Shopping",
+        cost: 1200,
+        time: Date.now(),
+      },
+      {
+        cardType: "Tobilola",
+        cost: 130,
+        time: Date.now(),
+      },
+      {
+        cardType: "Grocery",
+        cost: 1200,
+        time: Date.now(),
+      },
+      {
+        cardType: "Alvare",
+        cost: 1200,
+        time: Date.now(),
+      }
+   ]
   }
 
 

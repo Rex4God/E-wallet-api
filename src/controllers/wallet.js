@@ -6,7 +6,7 @@ const { BadRequestError, NotFoundError } = require('../errors')
 const create= (req, res) => {
   // Validate request
   if (!req.body.createdBy) {
-    res.status(400).send({
+    res.status(StatusCodes.BAD_REQUEST).send({
       message: "Content can not be empty!"
     });
     return;
@@ -14,7 +14,7 @@ const create= (req, res) => {
 
   //creating of card
   const wallet = {
-    createdBy: req.body.createdBy,
+    usersId: req.body.usersId,
     income: req.body.income,
     spent: req.body.spent,
   };
@@ -32,8 +32,8 @@ const create= (req, res) => {
     });
 };
 const getAllWallets = async(req, res) => {
-  const createdBy = req.query.createdBy;
-  const condition = createdBy? { createdBy: { [Op.like]: `%${createdBy}%` } } : null;
+  const usersId = req.query.usersId;
+  const condition = usersId? { usersId: { [Op.like]: `%${usersId}%` } } : null;
 
   Wallet.findAll({ where: condition })
     .then(data => {

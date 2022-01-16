@@ -51,7 +51,6 @@ const register =async (req, res) => {
     res.json({ message: "Welcome Back!", token: jwtToken });
   };
   
-
-
+  
   module.exports={ register,  login}
   

@@ -6,8 +6,8 @@ const Wallet = require("../models/Wallet");
 
 const create= async(req, res) => {
   // Validate request
-  if (!req.body.createdBy) {
-    res.status(400).send({
+  if (!req.body.userId) {
+    res.status(StatusCodes.BAD_REQUEST).send({
       message: "Content can not be empty!"
     });
     return;
@@ -15,7 +15,7 @@ const create= async(req, res) => {
 
   //creating of card
   const merchant = {
-    createdBy: req.body.createdBy,
+    usersId: req.body.usersId,
     merchantName: req.body.merchantName,
     merchantTransaction: req.body.merchantTransaction,
     amount: req.body.amount,
@@ -34,8 +34,8 @@ const create= async(req, res) => {
     });
 };
 const getAllMerchantTransactions = async(req, res) => {
-  const createdBy = req.query.createdBy;
-  const condition = createdBy? { createdBy: { [Op.like]: `%${createdBy}%` } } : null;
+  const usersId = req.query.usersId;
+  const condition = usersId ?{ usersId: { [Op.like]: `%${usersId}%` } } : null;
 
   Merchants.findAll({ where: condition })
     .then(data => {
