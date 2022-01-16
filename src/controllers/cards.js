@@ -124,46 +124,6 @@ const deleteAll = (req, res) => {
       });
   };
 
-<<<<<<< HEAD
-  const cardType = () => {
-     return [
-      {
-      cardType: "LifeStyle Pro",
-       cost: 9000,
-       time: Date.now()
-     },
-       {
-         cardType: "LifeStyle Premium",
-         cost: 1000,
-         time: Date.now()
-      },
-      {
-        cardType: "LifeStyle Business",
-        cost: 1200,
-        time: Date.now(),
-      },
-      {
-        cardType: "Shopping",
-        cost: 1200,
-        time: Date.now(),
-      },
-      {
-        cardType: "Tobilola",
-        cost: 130,
-        time: Date.now(),
-      },
-      {
-        cardType: "Grocery",
-        cost: 1200,
-        time: Date.now(),
-      },
-      {
-        cardType: "Alvare",
-        cost: 1200,
-        time: Date.now(),
-      }
-   ]
-=======
   const cardType = (req, res) => {
     res.send([
       {
@@ -179,7 +139,6 @@ const deleteAll = (req, res) => {
         cost: 1200
       }
     ]);
->>>>>>> ac5b141a899d9d724f483e59f0b63bf28e96860b
   }
 
 
