@@ -15,7 +15,7 @@ const create= async(req, res) => {
   //creating of card
   const category = {
     usersId: req.body.usersId,
-    merchantName: req.body.categoryName,
+    categoryName: req.body.categoryName,
     amount: req.body.amount,
   };
 
@@ -89,7 +89,7 @@ const updateCategory= (req, res) => {
     })
       .then(num => {
         if (num == 1) {
-          res.status(StatusCodes.success).send({ message: "Category  was deleted successfully!" });
+        res.send({ message: "Category  was deleted successfully!" });
         } else {
           res.status(StatusCodes.NOT_FOUND).send({message: `Cannot delete Category with id=${id}. Maybe category was not found!`
           });

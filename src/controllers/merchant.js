@@ -6,7 +6,7 @@ const Wallet = require("../models/Wallet");
 
 const create= async(req, res) => {
   // Validate request
-  if (!req.body.userId) {
+  if (!req.body.usersId) {
     res.status(StatusCodes.BAD_REQUEST).send({
       message: "Content can not be empty!"
     });
@@ -64,7 +64,7 @@ const getTransaction=async (req, res) => {
 const updateMerchant= (req, res) => {
     const id = req.params.id;
   
-    Wallet.update(req.body, {
+    Merchants.update(req.body, {
       where: { id: id }
     })
       .then(num => {
@@ -86,12 +86,13 @@ const updateMerchant= (req, res) => {
   const deleteMerchant = (req, res) => {
     const id = req.params.id;
   
-    Wallet.destroy({
+    Merchants.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
-          res.status(StatusCodes.success).send({ message: "merchant  was deleted successfully!" });
+          res.send({ message: "merchant  was deleted successfully!" });
+
         } else {
           res.status(StatusCodes.NOT_FOUND).send({message: `Cannot delete merchant with id=${id}. Maybe merchant card was not found!`
           });

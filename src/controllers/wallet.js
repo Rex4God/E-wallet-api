@@ -5,7 +5,7 @@ const { BadRequestError, NotFoundError } = require('../errors')
 
 const create= (req, res) => {
   // Validate request
-  if (!req.body.createdBy) {
+  if (!req.body.usersId) {
     res.status(StatusCodes.BAD_REQUEST).send({
       message: "Content can not be empty!"
     });
@@ -16,7 +16,7 @@ const create= (req, res) => {
   const wallet = {
     usersId: req.body.usersId,
     income: req.body.income,
-    spent: req.body.spent,
+    spent: req.body.spent
   };
 
   //  Saving  Life Style  card
@@ -89,7 +89,7 @@ const updateWallet= (req, res) => {
     })
       .then(num => {
         if (num == 1) {
-          res.status(StatusCodes.success).send({ message: "LifeStyle wallet  was deleted successfully!" });
+          res.send({ message: "LifeStyle wallet  was deleted successfully!" });
         } else {
           res.status(StatusCodes.NOT_FOUND).send({message: `Cannot delete wallet with id=${id}. Maybe wallet card was not found!`
           });
